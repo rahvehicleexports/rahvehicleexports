@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles - RAH Vehicle Exports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <span>RAH Vehicle Exports</span>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">RAH<span>.</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vehicles.html" class="active">Vehicles</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get Quote</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our <span class="gold-text">Vehicles</span></h1>
+            <p>Browse our selection of premium Japanese vehicles</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="vehicle-filters">
+                <input type="text" placeholder="Search vehicles..." id="vehicleSearch">
+                <select>
+                    <option>All Makes</option>
+                    <option>Toyota</option>
+                    <option>Honda</option>
+                    <option>Nissan</option>
+                    <option>Mazda</option>
+                    <option>Subaru</option>
+                    <option>Suzuki</option>
+                </select>
+                <select>
+                    <option>All Types</option>
+                    <option>SUV</option>
+                    <option>Sedan</option>
+                    <option>Hatchback</option>
+                    <option>Pickup</option>
+                </select>
+            </div>
+            <div class="grid-3" id="vehicleGrid">
+                <div class="glass-card vehicle-card" data-aos="fade-up">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Prado</h4>
+                    <div class="vehicle-meta"><span>2021</span><span>38k km</span><span>Auto</span><span>Diesel</span></div>
+                    <div class="price">$42,000</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="60">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Hilux</h4>
+                    <div class="vehicle-meta"><span>2021</span><span>32k km</span><span>Auto</span><span>Diesel</span></div>
+                    <div class="price">$29,200</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="120">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Land Cruiser</h4>
+                    <div class="vehicle-meta"><span>2020</span><span>45k km</span><span>Auto</span><span>Diesel</span></div>
+                    <div class="price">$38,500</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="180">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Corolla</h4>
+                    <div class="vehicle-meta"><span>2022</span><span>18k km</span><span>CVT</span><span>Petrol</span></div>
+                    <div class="price">$16,800</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="240">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Honda Vezel</h4>
+                    <div class="vehicle-meta"><span>2019</span><span>28k km</span><span>CVT</span><span>Hybrid</span></div>
+                    <div class="price">$21,800</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Honda Fit</h4>
+                    <div class="vehicle-meta"><span>2020</span><span>22k km</span><span>CVT</span><span>Petrol</span></div>
+                    <div class="price">$13,500</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="360">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Aqua</h4>
+                    <div class="vehicle-meta"><span>2021</span><span>15k km</span><span>CVT</span><span>Hybrid</span></div>
+                    <div class="price">$12,900</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="420">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Toyota Premio</h4>
+                    <div class="vehicle-meta"><span>2018</span><span>40k km</span><span>Auto</span><span>Petrol</span></div>
+                    <div class="price">$14,200</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="480">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Nissan X-Trail</h4>
+                    <div class="vehicle-meta"><span>2020</span><span>35k km</span><span>CVT</span><span>Petrol</span></div>
+                    <div class="price">$25,600</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="540">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Mazda CX-5</h4>
+                    <div class="vehicle-meta"><span>2021</span><span>30k km</span><span>Auto</span><span>Petrol</span></div>
+                    <div class="price">$26,400</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Subaru Forester</h4>
+                    <div class="vehicle-meta"><span>2020</span><span>33k km</span><span>CVT</span><span>Petrol</span></div>
+                    <div class="price">$27,900</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+                <div class="glass-card vehicle-card" data-aos="fade-up" data-aos-delay="660">
+                    <div class="vehicle-image"><i class="fas fa-car"></i></div>
+                    <h4>Suzuki Swift</h4>
+                    <div class="vehicle-meta"><span>2022</span><span>12k km</span><span>CVT</span><span>Petrol</span></div>
+                    <div class="price">$11,200</div>
+                    <div class="vehicle-actions">
+                        <a href="contact.html" class="btn btn-primary btn-sm">Request</a>
+                        <a href="#" class="btn btn-outline btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="grid-4">
+                <div>
+                    <h4>RAH Vehicle Exports</h4>
+                    <p style="color:var(--text-secondary);font-size:0.95rem;">Reliable Automotive Hub. Premium Japanese vehicles for the Caribbean.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="vehicles.html">Vehicles</a></li>
+                        <li><a href="process.html">Process</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Sourcing</li>
+                        <li>Shipping</li>
+                        <li>Documentation</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +92 339 7574906</li>
+                        <li><i class="fas fa-envelope"></i> rahvehicleexports@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 RAH Vehicle Exports. All rights reserved.</span>
+                <span>
+                    <a href="privacy.html">Privacy Policy</a> · 
+                    <a href="terms.html">Terms & Conditions</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

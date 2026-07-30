@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact - RAH Vehicle Exports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <style>
+        .social-links-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .social-links-row a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .social-links-row a:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+        .contact-info-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            border: 1px solid var(--border-glass);
+        }
+        .contact-info-card p {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .contact-info-card p i {
+            width: 28px;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .contact-info-card hr {
+            border-color: var(--border-glass);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="preloader-ring"></div>
+        <div class="preloader-text">RAH <span>Vehicle Exports</span></div>
+    </div>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/923397574906?text=Hello%20RAH%20Vehicle%20Exports%2C%20I%20need%20a%20vehicle%20quote"
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Chat with us</span>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <button id="back-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="RAH" onerror="this.style.display='none'">
+                <span>RAH<span>.</span> <span class="logo-full">Vehicle Exports</span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-primary">
+                    <span class="shine"></span>
+                    <i class="fas fa-paper-plane"></i> Get Quote
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Get in <span class="highlight">Touch</span></h1>
+            <p>Contact us for vehicle inquiries, quotes, and support</p>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section">
+        <div class="container">
+            <div class="grid-2">
+                <div data-aos="fade-right">
+                    <span class="badge" style="display:inline-block;margin-bottom:12px;">Contact</span>
+                    <h2 style="font-family:'Cinzel',serif;font-size:2rem;font-weight:700;margin-bottom:20px;">Send us a <span class="highlight">Message</span></h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group"><input type="text" id="fullName" placeholder="Full Name" required /></div>
+                        <div class="form-group"><input type="text" id="country" placeholder="Country" required /></div>
+                        <div class="form-group"><input type="tel" id="phone" placeholder="Phone" required /></div>
+                        <div class="form-group"><input type="text" id="whatsapp" placeholder="WhatsApp Number" /></div>
+                        <div class="form-group"><input type="email" id="email" placeholder="Email" required /></div>
+                        <div class="form-group"><input type="text" id="vehicleInterest" placeholder="Vehicle of interest" /></div>
+                        <div class="form-group"><input type="text" id="budget" placeholder="Budget (USD)" /></div>
+                        <div class="form-group"><textarea id="message" rows="4" placeholder="Additional details..." required></textarea></div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="shine"></span>
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                    </form>
+                    <div id="formStatus" style="margin-top:16px;"></div>
+                </div>
+                <div data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <h3 style="font-family:'Cinzel',serif;font-size:1.2rem;font-weight:600;margin-bottom:20px;">Contact <span class="highlight">Information</span></h3>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+923397574906" class="clickable-contact">+92 339 7574906</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:rahvehicleexports@gmail.com" class="clickable-contact">rahvehicleexports@gmail.com</a></p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923397574906" target="_blank" class="clickable-contact">+92 339 7574906</a></p>
+                        <hr />
+                        <h4 style="font-family:'Cinzel',serif;font-size:0.9rem;font-weight:600;margin-bottom:12px;">Follow Us</h4>
+                        <div class="social-links-row">
+                            <a href="https://www.facebook.com/rahvehicleexports/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/rahvehicleexports/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@rahvehicleexports" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.youtube.com/@rahvehicleexports" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/rah-vehicle-exports/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <hr />
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-pin"></i>
+                            <p><strong>Barbados</strong> · Caribbean</p>
+                            <p style="color:var(--text-secondary);font-size:0.85rem;font-weight:300;">Serving all Caribbean nations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid-4">
+                <div>
+                    <h4>RAH Vehicle Exports</h4>
+                    <p style="color:var(--text-secondary);font-size:0.85rem;font-weight:300;">Reliable Automotive Hub. Premium Japanese vehicles for the Caribbean.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rahvehicleexports/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rahvehicleexports/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@rahvehicleexports" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@rahvehicleexports" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/rah-vehicle-exports/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Sourcing</li>
+                        <li>Shipping</li>
+                        <li>Documentation</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+923397574906" class="clickable-contact">+92 339 7574906</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:rahvehicleexports@gmail.com" class="clickable-contact">rahvehicleexports@gmail.com</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923397574906" target="_blank" class="clickable-contact">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 RAH Vehicle Exports. All rights reserved.</span>
+                <span>
+                    <a href="privacy.html">Privacy Policy</a> · 
+                    <a href="terms.html">Terms & Conditions</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        (function() {
+            function hidePreloader() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) preloader.classList.add('hide');
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader);
+            } else { hidePreloader(); }
+            setTimeout(hidePreloader, 2000);
+            window.addEventListener('load', function() { setTimeout(hidePreloader, 300); });
+        })();
+    </script>
+</body>
+</html>

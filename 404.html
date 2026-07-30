@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>404 - Page Not Found | RAH Vehicle Exports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <style>
+        .error-404 {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .error-404 .number {
+            font-family: 'Cinzel', serif;
+            font-size: 10rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--gold), var(--red), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+        }
+        .error-404 h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+        .error-404 p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .error-404 .number { font-size: 6rem; }
+            .error-404 h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="preloader-ring"></div>
+        <div class="preloader-text">RAH <span>Vehicle Exports</span></div>
+    </div>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/923397574906?text=Hello%20RAH%20Vehicle%20Exports%2C%20I%20need%20a%20vehicle%20quote"
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Chat with us</span>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <button id="back-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="RAH" onerror="this.style.display='none'">
+                <span>RAH<span>.</span> <span class="logo-full">Vehicle Exports</span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-primary">
+                    <span class="shine"></span>
+                    <i class="fas fa-paper-plane"></i> Get Quote
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 404 CONTENT -->
+    <section class="error-404">
+        <div class="container">
+            <div class="number">404</div>
+            <h1>Page Not <span class="highlight">Found</span></h1>
+            <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+            <a href="index.html" class="btn btn-primary">
+                <span class="shine"></span>
+                <i class="fas fa-home"></i> Return Home
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="margin-top:0;">
+        <div class="container">
+            <div class="grid-4">
+                <div>
+                    <h4>RAH Vehicle Exports</h4>
+                    <p style="color:var(--text-secondary);font-size:0.85rem;font-weight:300;">Reliable Automotive Hub. Premium Japanese vehicles for the Caribbean.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rahvehicleexports/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rahvehicleexports/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@rahvehicleexports" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@rahvehicleexports" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/rah-vehicle-exports/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Sourcing</li>
+                        <li>Shipping</li>
+                        <li>Documentation</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+923397574906" class="clickable-contact">+92 339 7574906</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:rahvehicleexports@gmail.com" class="clickable-contact">rahvehicleexports@gmail.com</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923397574906" target="_blank" class="clickable-contact">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 RAH Vehicle Exports. All rights reserved.</span>
+                <span>
+                    <a href="privacy.html">Privacy Policy</a> · 
+                    <a href="terms.html">Terms & Conditions</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        (function() {
+            function hidePreloader() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) preloader.classList.add('hide');
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader);
+            } else { hidePreloader(); }
+            setTimeout(hidePreloader, 2000);
+            window.addEventListener('load', function() { setTimeout(hidePreloader, 300); });
+        })();
+    </script>
+</body>
+</html>

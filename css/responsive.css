@@ -1,0 +1,63 @@
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .section-header h2 { font-size: 2.4rem; }
+    .page-header h1 { font-size: 2.6rem; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 10px 20px; border-radius: 40px; top: 12px; width: calc(100% - 24px); }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(20px);
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid var(--border-glass);
+        gap: 8px;
+    }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .section { padding: 60px 0; }
+    .section-header h2 { font-size: 2rem; }
+    .timeline { flex-direction: column; align-items: center; }
+    .timeline-item { width: 100%; max-width: 280px; }
+    .footer .grid-4 { grid-template-columns: 1fr 1fr; }
+    .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 16px; }
+    .whatsapp-float .tooltip { display: none; }
+    #back-top { bottom: 80px; right: 16px; width: 38px; height: 38px; font-size: 0.9rem; }
+    .page-header { padding: 120px 0 40px; }
+    .page-header h1 { font-size: 2rem; }
+    .logo { font-size: 1.1rem; }
+    .logo img { height: 28px; }
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-stats { gap: 30px; flex-wrap: wrap; }
+    .hero-stats div h3 { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .section-header h2 { font-size: 1.6rem; }
+    .container { padding: 0 16px; }
+    .navbar { padding: 8px 16px; }
+    .logo { font-size: 1rem; }
+    .logo img { height: 24px; }
+    .btn { padding: 12px 24px; font-size: 0.7rem; }
+    .glass-card { padding: 20px 16px; }
+    .country-tag { font-size: 0.7rem; padding: 6px 14px; }
+    .footer .grid-4 { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 1.6rem; }
+    .page-header p { font-size: 0.9rem; }
+    .timeline-item { padding: 20px 12px; }
+    .timeline-item::before { font-size: 2rem; }
+}

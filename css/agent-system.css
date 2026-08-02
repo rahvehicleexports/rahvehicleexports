@@ -1,0 +1,211 @@
+/* ========================================
+   AGENT SYSTEM STYLES
+   ======================================== */
+
+/* ----- Agent Dashboard Layout ----- */
+.agent-dashboard {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: var(--bg-primary);
+}
+
+.dashboard-sidebar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 80px);
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-glass);
+    padding: 24px 16px;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-sidebar .sidebar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    padding: 0 12px 20px;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-sidebar .sidebar-brand img {
+    height: 30px;
+    width: auto;
+}
+
+.dashboard-sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.dashboard-sidebar .nav-item:hover {
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+}
+
+.dashboard-sidebar .nav-item.active {
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--gold);
+}
+
+.dashboard-sidebar .nav-item i {
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+.dashboard-main {
+    margin-left: 260px;
+    padding: 24px 32px 60px;
+}
+
+/* ----- Dashboard Stats Cards ----- */
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    transition: all 0.4s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.15);
+    box-shadow: var(--shadow-glow);
+}
+
+.stat-card .stat-icon {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.stat-card .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-card .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+/* ----- Agent Profile Header ----- */
+.agent-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    margin-bottom: 32px;
+}
+
+.agent-profile-header .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #000;
+    font-family: 'Cinzel', serif;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.agent-profile-header .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.agent-profile-header .info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.agent-profile-header .info .badge-status {
+    display: inline-block;
+    padding: 2px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.badge-status.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.badge-status.pending {
+    background: rgba(251, 191, 36, 0.15);
+    color: #f59e0b;
+}
+
+.badge-status.inactive {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+
+.badge-status.suspended {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+}
+
+/* ----- Table Styles ----- */
+.agent-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.agent-table th {
+    text-align: left;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.agent-table td {
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.agent-table tr:hover td {
+    background: rgba

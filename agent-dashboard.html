@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Agent Dashboard - RAH Vehicle Exports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/agent-system.css" />
+    <style>
+        .agent-dashboard {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--bg-primary);
+        }
+        .agent-dashboard .container {
+            padding: 24px 32px 60px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .dashboard-grid .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            transition: all 0.3s ease;
+        }
+        .dashboard-grid .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+        .dashboard-grid .stat-card .number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .dashboard-grid .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+        .dashboard-grid .stat-card .icon {
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .welcome-banner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .welcome-banner .greeting h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .welcome-banner .greeting p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        .welcome-banner .agent-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 8px 20px;
+        }
+        .welcome-banner .agent-badge .id {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+        .welcome-banner .agent-badge .status {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--success);
+        }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .quick-actions .action-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+        .quick-actions .action-btn:hover {
+            border-color: var(--gold);
+            color: #fff;
+            transform: translateY(-4px);
+        }
+        .quick-actions .action-btn i {
+            font-size: 1.6rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .lead-table-wrap {
+            overflow-x: auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 4px;
+            margin-bottom: 24px;
+        }
+        .lead-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .lead-table th {
+            text-align: left;
+            padding: 10px 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-glass);
+        }
+        .lead-table td {
+            padding: 10px 14px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .lead-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .lead-status {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .lead-status.new { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .lead-status.contacted { background: rgba(251,191,36,0.15); color: #f59e0b; }
+        .lead-status.negotiating { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        .lead-status.won { background: rgba(16,185,129,0.15); color: var(--success); }
+        .lead-status.lost { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+        @media (max-width: 768px) {
+            .agent-dashboard .container { padding: 16px; }
+            .welcome-banner { flex-direction: column; text-align: center; }
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+            .quick-actions { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .quick-actions { grid-template-columns: 1fr; }
+            .lead-table { font-size: 0.75rem; }
+            .lead-table th,
+            .lead-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="preloader-ring"></div>
+        <div class="preloader-text">RAH <span>Vehicle Exports</span></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="RAH" onerror="this.style.display='none'">
+                <span>RAH<span>.</span> <span class="logo-full">Agent Portal</span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="agent-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#">Leads</a></li>
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Commission</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#" onclick="logout()" class="btn btn-outline" style="padding:8px 20px;font-size:0.75rem;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- AGENT DASHBOARD -->
+    <section class="agent-dashboard">
+        <div class="container">
+
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="greeting">
+                    <h2>👋 Welcome back, <span class="gold-text">John</span></h2>
+                    <p>Here's your sales performance overview</p>
+                </div>
+                <div class="agent-badge">
+                    <div>
+                        <div class="id">RAH0007</div>
+                        <div class="status">🟢 Active</div>
+                    </div>
+                    <div style="border-left:1px solid var(--border-glass);padding-left:16px;">
+                        <div style="font-size:0.7rem;color:var(--text-muted);">Country</div>
+                        <div style="font-size:0.85rem;">🇧🇧 Barbados</div>
+                    </div>
+                    <div style="border-left:1px solid var(--border-glass);padding-left:16px;">
+                        <div style="font-size:0.7rem;color:var(--text-muted);">Level</div>
+                        <div style="font-size:0.85rem;color:var(--gold);">Gold Agent ⭐</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                    <div class="number" data-target="12">0</div>
+                    <div class="label">Vehicles Sold</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="number" data-target="28">0</div>
+                    <div class="label">Total Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="number" data-target="8450">0</div>
+                    <div class="label">Commission Earned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <div class="number" data-target="5">0</div>
+                    <div class="label">Pending Sales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-percent"></i></div>
+                    <div class="number" data-target="68">0</div>
+                    <div class="label">Conversion Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-trophy"></i></div>
+                    <div class="number" data-target="3">0</div>
+                    <div class="label">Monthly Champion</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h3 class="section-title">Quick Actions</h3>
+            <div class="quick-actions">
+                <a href="#" class="action-btn"><i class="fas fa-user-plus"></i> Add Lead</a>
+                <a href="#" class="action-btn"><i class="fas fa-car"></i> Vehicle Request</a>
+                <a href="#" class="action-btn"><i class="fas fa-hand-holding-usd"></i> Commission</a>
+                <a href="#" class="action-btn"><i class="fas fa-download"></i> Resources</a>
+                <a href="#" class="action-btn"><i class="fas fa-share-alt"></i> Referral Link</a>
+                <a href="#" class="action-btn"><i class="fas fa-question-circle"></i> Support</a>
+            </div>
+
+            <!-- Recent Leads -->
+            <h3 class="section-title">Recent Leads</h3>
+            <div class="lead-table-wrap">
+                <table class="lead-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Vehicle</th>
+                            <th>Budget</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Michael B.</td>
+                            <td>Toyota Land Cruiser</td>
+                            <td>$35,000</td>
+                            <td><span class="lead-status negotiating">Negotiating</span></td>
+                            <td>2025-01-15</td>
+                            <td><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Sarah J.</td>
+                            <td>Honda Vezel</td>
+                            <td>$18,000</td>
+                            <td><span class="lead-status contacted">Contacted</span></td>
+                            <td>2025-01-14</td>
+                            <td><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>David R.</td>
+                            <td>Toyota Hilux</td>
+                            <td>$25,000</td>
+                            <td><span class="lead-status new">New</span></td>
+                            <td>2025-01-13</td>
+                            <td><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Lisa M.</td>
+                            <td>Nissan X-Trail</td>
+                            <td>$22,000</td>
+                            <td><span class="lead-status won">Won</span></td>
+                            <td>2025-01-12</td>
+                            <td><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>James K.</td>
+                            <td>Subaru Forester</td>
+                            <td>$24,000</td>
+                            <td><span class="lead-status lost">Lost</span></td>
+                            <td>2025-01-10</td>
+                            <td><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/agent-system.js"></script>
+    <script>
+        // Load stats with animation
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAgentStats();
+        });
+
+        (function() {
+            function hidePreloader() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) preloader.classList.add('hide');
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader);
+            } else { hidePreloader(); }
+            setTimeout(hidePreloader, 2000);
+            window.addEventListener('load', function() { setTimeout(hidePreloader, 300); });
+        })();
+    </script>
+</body>
+</html>

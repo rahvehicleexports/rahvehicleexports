@@ -208,4 +208,142 @@
 }
 
 .agent-table tr:hover td {
-    background: rgba
+    background: rgba(255,255,255,0.02);
+}
+
+/* ----- Admin Dashboard ----- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+}
+
+.admin-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.admin-header .admin-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.admin-search {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-search input,
+.admin-search select {
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 180px;
+}
+
+.admin-search input:focus,
+.admin-search select:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.admin-stats-grid .stat-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.admin-stats-grid .stat-box .number {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.admin-stats-grid .stat-box .label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+/* ----- Responsive Dashboard ----- */
+@media (max-width: 1024px) {
+    .dashboard-sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    .dashboard-sidebar.open {
+        transform: translateX(0);
+    }
+    .dashboard-main {
+        margin-left: 0;
+        padding: 16px;
+    }
+    .mobile-menu-toggle {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .admin-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    .stat-card .stat-number {
+        font-size: 1.5rem;
+    }
+    .agent-table {
+        font-size: 0.75rem;
+    }
+    .agent-table th,
+    .agent-table td {
+        padding: 8px 10px;
+    }
+}
+
+/* ----- Utility Classes ----- */
+.text-gold { color: var(--gold); }
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-muted { color: var(--text-muted); }
+
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }

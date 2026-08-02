@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Dashboard - RAH Vehicle Exports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/agent-system.css" />
+    <style>
+        .admin-dashboard {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--bg-primary);
+        }
+        .admin-dashboard .container {
+            padding: 24px 32px 60px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .admin-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .admin-header .admin-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .admin-stats-grid .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .admin-stats-grid .stat-box:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+        .admin-stats-grid .stat-box .number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .admin-stats-grid .stat-box .label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .admin-search {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .admin-search input,
+        .admin-search select {
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 160px;
+        }
+        .admin-search input:focus,
+        .admin-search select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .admin-table-wrap {
+            overflow-x: auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 4px;
+        }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .admin-table th {
+            text-align: left;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-glass);
+        }
+        .admin-table td {
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .admin-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .badge-status {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-status.approved { background: rgba(16,185,129,0.15); color: var(--success); }
+        .badge-status.pending { background: rgba(251,191,36,0.15); color: #f59e0b; }
+        .badge-status.rejected { background: rgba(239,68,68,0.15); color: var(--danger); }
+        .badge-status.suspended { background: rgba(239,68,68,0.2); color: var(--danger); }
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.7rem;
+        }
+        .btn-sm i { font-size: 0.8rem; }
+
+        .tab-nav {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 4px;
+            flex-wrap: wrap;
+        }
+        .tab-nav .tab-btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab-nav .tab-btn:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.04);
+        }
+        .tab-nav .tab-btn.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .admin-dashboard .container { padding: 16px; }
+            .admin-header { flex-direction: column; text-align: center; }
+            .admin-header h1 { font-size: 1.3rem; }
+            .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .admin-search { flex-direction: column; }
+            .admin-search input,
+            .admin-search select { min-width: 100%; }
+            .admin-table { font-size: 0.75rem; }
+            .admin-table th,
+            .admin-table td { padding: 8px 10px; }
+            .tab-nav .tab-btn { font-size: 0.75rem; padding: 6px 14px; }
+        }
+        @media (max-width: 480px) {
+            .admin-stats-grid { grid-template-columns: 1fr; }
+            .admin-header .admin-actions .btn { font-size: 0.7rem; padding: 8px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="preloader-ring"></div>
+        <div class="preloader-text">RAH <span>Vehicle Exports</span></div>
+    </div>
+
+    <!-- NAVBAR (simplified for admin) -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="RAH" onerror="this.style.display='none'">
+                <span>RAH<span>.</span> <span class="logo-full">Admin Panel</span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#" onclick="loadAgentTable()">Agents</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#" onclick="logout()" class="btn btn-outline" style="padding:8px 20px;font-size:0.75rem;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ADMIN DASHBOARD -->
+    <section class="admin-dashboard">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="admin-header">
+                <h1><i class="fas fa-shield-alt" style="color:var(--gold);"></i> Admin Dashboard</h1>
+                <div class="admin-actions">
+                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Export</a>
+                    <a href="#" class="btn btn-outline btn-sm"><i class="fas fa-sync-alt"></i> Refresh</a>
+                    <a href="#" onclick="logout()" class="btn btn-outline btn-sm"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="admin-stats-grid">
+                <div class="stat-box"><div class="number" id="totalAgents">0</div><div class="label">Total Agents</div></div>
+                <div class="stat-box"><div class="number" id="pendingAgents">0</div><div class="label">Pending Review</div></div>
+                <div class="stat-box"><div class="number" id="approvedAgents">0</div><div class="label">Approved Agents</div></div>
+                <div class="stat-box"><div class="number" id="rejectedAgents">0</div><div class="label">Rejected</div></div>
+                <div class="stat-box"><div class="number">$24,500</div><div class="label">Total Commission Paid</div></div>
+                <div class="stat-box"><div class="number">42</div><div class="label">Vehicles Sold</div></div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="applications"><i class="fas fa-users"></i> Applications</button>
+                <button class="tab-btn" data-tab="approved"><i class="fas fa-check-circle"></i> Approved</button>
+                <button class="tab-btn" data-tab="rejected"><i class="fas fa-times-circle"></i> Rejected</button>
+                <button class="tab-btn" data-tab="all"><i class="fas fa-list"></i> All Agents</button>
+            </div>
+
+            <!-- Applications Tab -->
+            <div class="tab-content active" id="tab-applications">
+                <div class="admin-search">
+                    <input type="text" placeholder="Search by name, email, or ID..." />
+                    <select>
+                        <option>All Status</option>
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                    </select>
+                    <select>
+                        <option>All Countries</option>
+                        <option>Barbados</option>
+                        <option>Jamaica</option>
+                        <option>Trinidad</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search</button>
+                </div>
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Agent ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Country</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agentTableBody">
+                            <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:40px;">Loading agents...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Approved Tab -->
+            <div class="tab-content" id="tab-approved">
+                <p style="color:var(--text-secondary);padding:20px 0;">Approved agents will appear here.</p>
+            </div>
+
+            <!-- Rejected Tab -->
+            <div class="tab-content" id="tab-rejected">
+                <p style="color:var(--text-secondary);padding:20px 0;">Rejected agents will appear here.</p>
+            </div>
+
+            <!-- All Agents Tab -->
+            <div class="tab-content" id="tab-all">
+                <p style="color:var(--text-secondary);padding:20px 0;">All agents will appear here.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/agent-system.js"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                const target = document.getElementById('tab-' + this.dataset.tab);
+                if (target) target.classList.add('active');
+            });
+        });
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAgentTable();
+            updateStats();
+        });
+
+        // Preloader
+        (function() {
+            function hidePreloader() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) preloader.classList.add('hide');
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader);
+            } else { hidePreloader(); }
+            setTimeout(hidePreloader, 2000);
+            window.addEventListener('load', function() { setTimeout(hidePreloader, 300); });
+        })();
+    </script>
+</body>
+</html>
